@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyberbullying Detection</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Cyberbullying Detection</h1>
+        <form action="/" method="POST">
+            <textarea name="user_input" placeholder="Enter your text here..." required>{{ user_input if user_input else '' }}</textarea>
+            <br>
+            <button type="submit">Analyze</button>
+        </form>
+
+        {% if prediction is not none %}
+        <div class="result {% if prediction == 'Cyberbullying' %}cyberbullying{% else %}non-cyberbullying{% endif %}">
+            {{ prediction }}
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
